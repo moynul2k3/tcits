@@ -1,0 +1,283 @@
+{% include 'index/index.html' %}
+{% load static tailwind_tags %}
+<div id="loginPage" class="fixed top-0 left-0 h-screen w-screen bg-[#010f0f4f] z-50 backdrop-blur-sm flex justify-center items-center" style="display: none;">
+    <div class="max-md:h-full h-[400px] max-md:w-full md:w-[85%] lg:w-[80%] xl:w-[60%] xxl:w-[40%] bg-[#053c3db9] backdrop-blur-[50%] max-md:px-5  rounded relative max-md:overflow-y-auto flex justify-between items-center">
+        <div class="w-[50%] h-full bg-white flex justify-center items-center max-md:hidden">
+            <img src="/static/assets/logos/logo.png" alt="" class="h-60">
+        </div>
+        <div class="max-md:w-full md:w-[50%] h-full relative overflow-hidden">
+            <div id="LoginPage" class="md:px-4 lg:px-8 xxl:px-10 absolute top-0 left-0 translate-x-0 w-full">
+                <p class="text-center text-xl font-semibold max-md:mt-[40%] md:mt-10">Log in or sign up in seconds</p>
+                <p class="text-[10px] mt-3 text-white/60 text-wrap text-center">Use your email or another service to continue <br>with <br><span class="font-semibold ">Titumir College IT Society</span>.</p>
+
+                <div class="w-full flex justify-start items-center flex-col gap-5 mt-8">
+                    <a href="{% url 'social:begin' 'google-oauth2' %}" class="h-10 w-full border-[1px] border-[#09C9CC80] hover:bg-[#09c9cc3f] flex justify-center items-center rounded-md font-semibold relative">
+                        <p>Continue with Google</p>
+                        <img src="/static/assets/icon/google_icon.png" alt="" class="h-6 absolute left-5">
+                    </a>
+                    <button id="EmailContinue" class="h-10 w-full border-[1px] border-[#09C9CC80] hover:bg-[#09c9cc3f] flex justify-center items-center rounded-md font-semibold relative">
+                        <p>Continue with email</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="absolute left-5" width="24" height="24" viewBox="0 0 24 24" style="fill: currentColor;"><path d="M20 4H4c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm0 2v.511l-8 6.223-8-6.222V6h16zM4 18V9.044l7.386 5.745a.994.994 0 0 0 1.228 0L20 9.044 20.002 18H4z"></path></svg>
+                    </button>
+                </div>
+
+                <p class="text-[10px] mt-10 text-white/60 text-wrap text-center">By continuing, you agree to TCITS's <span class="underline cursor-pointer  hover:text-[#09C9CC]">Terms of Use</span>. Read our <span class="underline cursor-pointer  hover:text-[#09C9CC]">Privacy Policy</span>.</p>
+            </div>
+
+
+
+            <!-- ----------------------Submi Email----------------------- -->
+            <div id="emailLogIn" class="absolute md:px-4 lg:px-8 xxl:px-10 top-0 left-0 translate-x-full">
+                <div class="flex justify-start items-center max-md:mt-[40%] md:mt-10 ">
+                    <div id="emailLogInClose" class="cursor-pointer hover:text-[#09C9CC] group flex justify-end items-center w-8 h-10 relative">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="absolute right-0 group-hover:-translate-x-5" width="24" height="24" viewBox="0 0 24 24" style="fill: currentColor"><path d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"></path></svg>
+                        <hr class="w-0 absolute right-3 group-hover:w-5 h-[2px] border-0 bg-[#09C9CC]">
+                    </div>
+                    
+                    <p  class=" text-xl font-semibold ">Continue with email</p>
+                </div>
+                <div class="md:ps-8 md:pe-4">
+                    <p class="text-[14px] mt-3 text-white/60 text-wrap">We'll check if you have an account, and help create one if you don't.</p>
+                    <form id="email-form">
+                        {% csrf_token %}
+                        <div class="relative mt-5">
+                            <label for="email" class="text-[#09C9CC] relative text-sm">Email :</label>
+                            <div class="bg-white/10 rounded my-2">
+                                <input type="email" required name="email" id="email" placeholder="Your email"  class="bg-transparent w-full h-10 text-[#09C9CC] border-none focus:border-none focus:outline-none focus:ring-0 rounded peer text-sm ">
+                                <small class="absolute -bottom-5 left-0 justify-between w-full py-1 text-[10px] transition text-red-500 hidden peer-invalid:block">
+                                    <span>Please enter a valid email.</span>
+                                </small>
+                            </div>
+                        </div>
+
+                        <div class="w-full flex justify-center items-center">
+                            <button type="submit" class="mt-5 h-10 text-sm w-full  c_center shadow-[inset_0px_0px_27px_3px_rgba(9,_201,_204,_1)] rounded-md  hover:bg-[#09C9CC] text-[#09C9CC] hover:text-black duration-75">
+                                <span>Continue</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+            <!-- -----------------------Sign In Form------------------------ -->
+            <div id="passwordLogIn" class="absolute md:px-4 lg:px-8 xxl:px-10 top-0 left-0 w-full translate-x-full">
+                <div class="flex justify-start items-center max-md:mt-[40%] md:mt-10 ">
+                    <div id="passwordLogInClose" class="cursor-pointer hover:text-[#09C9CC] group flex justify-end items-center w-8 h-10 relative">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="absolute right-0 group-hover:-translate-x-5" width="24" height="24" viewBox="0 0 24 24" style="fill: currentColor"><path d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"></path></svg>
+                        <hr class="w-0 absolute right-3 group-hover:w-5 h-[2px] border-0 bg-[#09C9CC]">
+                    </div>
+                    
+                    <p id="userName" class=" text-xl font-semibold "></p>
+                </div>
+                <div class="md:ps-8 md:pe-4">
+                    <p class="text-[14px] mt-3 text-white/60 text-wrap">Welcome back to Titumir College IT Society.</p>
+                    <form id="login-form">
+                        {% csrf_token %}
+                        <input type="hidden" name="email" id="login-email">
+                        <div class="relative mt-5">
+                            <label for="password" class="text-[#09C9CC] relative text-sm">Password :</label>
+                            <div class="bg-white/10 rounded mt-2 relative flex items-center">
+                                <input type="password" name="password" id="password" placeholder="Your password"  class="visible bg-transparent w-full h-10 text-[#09C9CC] border-none focus:border-none focus:outline-none focus:ring-0 rounded peer text-sm ">
+                                <span class="toggle-password cursor-pointer absolute right-3 select-none" onclick="togglePassword()">
+                                    <i class="fas fa-eye-slash eye text-[#09C9CC] text-lg"></i>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="w-full flex justify-center items-center">
+                            <button type="submit" class="mt-5 h-10 text-sm w-full  c_center shadow-[inset_0px_0px_27px_3px_rgba(9,_201,_204,_1)] rounded-md  hover:bg-[#09C9CC] text-[#09C9CC] hover:text-black duration-75">
+                                <span>Log in</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+            <!-- ------------signup Form---------------- -->
+            <div id="passwordSignUp" class="absolute md:px-4 lg:px-8 xxl:px-10 top-0 left-0 w-full translate-x-full">
+                <div class="flex justify-start items-center max-md:mt-[40%] md:mt-10 ">
+                    <div id="passwordSignUpClose" class="cursor-pointer hover:text-[#09C9CC] group flex justify-end items-center w-8 h-10 relative">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="absolute right-0 group-hover:-translate-x-5" width="24" height="24" viewBox="0 0 24 24" style="fill: currentColor"><path d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"></path></svg>
+                        <hr class="w-0 absolute right-3 group-hover:w-5 h-[2px] border-0 bg-[#09C9CC]">
+                    </div>
+                    
+                    <p class=" text-xl font-semibold ">Sign Up Please</p>
+                </div>
+                <div class="md:ps-8 md:pe-4">
+                    <form id="signup-form">
+                        {% csrf_token %}
+                        <input type="hidden" name="email" id="signup-email">
+                        <div class="relative mt-5">
+                            <label for="signup_password" class="text-[#09C9CC] relative text-sm">Password :</label>
+                            <div class="bg-white/10 rounded mt-2 relative flex items-center">
+                                <input type="password" name="signup_password" id="signup_password" placeholder="Your password"  class="visible bg-transparent w-full h-10 text-[#09C9CC] border-none focus:border-none focus:outline-none focus:ring-0 rounded peer text-sm ">
+                                <span class="toggle-password cursor-pointer absolute right-3 select-none" onclick="togglePassword()">
+                                    <i class="fas fa-eye-slash eye text-[#09C9CC] text-lg"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="relative mt-2">
+                            <label for="confirm_password" class="text-[#09C9CC] relative text-sm">Confirm Password :</label>
+                            <div class="bg-white/10 rounded mt-2 relative flex items-center">
+                                <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm your password"  class="visible bg-transparent w-full h-10 text-[#09C9CC] border-none focus:border-none focus:outline-none focus:ring-0 rounded peer text-sm ">
+                                <span class="toggle-password cursor-pointer absolute right-3 select-none" onclick="togglePassword()">
+                                    <i class="fas fa-eye-slash eye text-[#09C9CC] text-lg"></i>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="w-full flex justify-center items-center">
+                            <button type="submit" class="mt-5 h-10 text-sm w-full  c_center shadow-[inset_0px_0px_27px_3px_rgba(9,_201,_204,_1)] rounded-md  hover:bg-[#09C9CC] text-[#09C9CC] hover:text-black duration-75">
+                                <span>Sign up</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <small id="message" class="absolute bottom-5 left-0 justify-center w-full py-1 text-[10px] transition text-center">
+                
+            </small>
+        </div>
+        
+        <a href="/" class="absolute h-10 w-10 bg-white/10 hover:bg-white/20 -top-4 -right-12 rounded-full flex justify-center items-center text-2xl text-[#09c9cca6] hover:text-[#09C9CC]">
+            <i class='bx bx-plus rotate-45'></i>
+        </a>
+    </div>
+</div>
+
+
+
+<script>
+    disableScroll()
+    $(document).ready(function(){
+        $('#loginPage').fadeIn('fast');
+
+        $('#EmailContinue').click(function(){
+            $('#LoginPage').removeClass('translate-x-0').addClass('-translate-x-full');
+            $('#emailLogIn').removeClass('translate-x-full').addClass('translate-x-0');
+        });
+        $('#emailLogInClose').click(function(){
+            $('#LoginPage').removeClass('-translate-x-full').addClass('translate-x-0');
+            $('#emailLogIn').removeClass('translate-x-0').addClass('translate-x-full');
+        });
+        $('#passwordLogInClose').click(function(){
+            $('#emailLogIn').removeClass('-translate-x-full').addClass('translate-x-0');
+            $('#passwordLogIn').removeClass('translate-x-0').addClass('translate-x-full');
+        });
+        $('#passwordSignUpClose').click(function(){
+            $('#emailLogIn').removeClass('-translate-x-full').addClass('translate-x-0');
+            $('#passwordSignUp').removeClass('translate-x-0').addClass('translate-x-full');
+        });
+
+        $(".toggle-password").click(function() {
+            var passwordField = $(this).parent().find('input');
+            var passwordFieldType = passwordField.attr("type");
+            if (passwordFieldType === "password") {
+                passwordField.attr("type", "text");
+                $(this).find('.eye').removeClass('fas fa-eye-slash').addClass('far fa-eye');
+            } else {
+                passwordField.attr("type", "password");
+                $(this).find('.eye').addClass('fas fa-eye-slash').removeClass('far fa-eye');
+            }
+        });
+    });
+</script>
+
+<script>
+    $(document).ready(function() {
+        // Handle email submission
+        var spin = '<svg aria-hidden="true" class="animate-spin w-5 h-5 text-white/20 animate-spin fill-[#09C9CC]" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/><path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/></svg>'
+
+        function spin_add(x) {
+            var $submitButton = $('button[type="submit"]');
+            if (x===true) {
+                $submitButton.addClass('pointer-events-none');
+                $submitButton.children().hide();
+                $submitButton.append(spin);
+            } else if (x===false) {
+                $submitButton.find('.animate-spin').remove();
+                $submitButton.removeClass('pointer-events-none');
+                $submitButton.children().show();
+            }
+        }
+
+        $('#email-form').on('submit', function(e) {
+            spin_add(true)
+            e.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: '',
+                data: $(this).serialize() + '&action=submit_email',
+                success: function(response) {
+                    spin_add(false)
+                    if (response.status === 'exists') {
+                        $('#login-email').val(response.email);
+                        $('#emailLogIn').removeClass('translate-x-0').addClass('-translate-x-full');
+                        $('#passwordLogIn').removeClass('translate-x-full').addClass('translate-x-0');
+                        $("#userName").text('Hello ' + response.name);
+                    } else if (response.status === 'new') {
+                        $('#signup-email').val(response.email);
+                        $('#emailLogIn').removeClass('translate-x-0').addClass('-translate-x-full');
+                        $('#passwordSignUp').removeClass('translate-x-full').addClass('translate-x-0');
+                    }
+                }
+            });
+        });
+
+        // Handle login submission
+        $('#login-form').on('submit', function(e) {
+            spin_add(true)
+            e.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: '',
+                data: $(this).serialize() + '&action=login',
+                success: function(response) {
+                    if (response.status === 'success') {
+                        $('#message').append('<span class="text-[#09C9CC]">' + response.message + '</span>');
+                        setTimeout(function(){
+                            window.location.href = '/'; 
+                            $('#message').empty();
+                        }, 3000);
+                    } else if (response.status === 'error'){
+                        $('#message').append('<span class="text-[#f00]">' + response.message + '</span>');
+                        setTimeout(function(){
+                            $('#message').empty();
+                            spin_add(false)
+                        }, 3000);
+                    }
+                }
+            });
+        });
+
+        // Handle signup submission
+        $('#signup-form').on('submit', function(e) {
+            spin_add(true)
+            e.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: '',
+                data: $(this).serialize() + '&action=signup',
+                success: function(response) {
+                    if (response.status === 'success') {
+                        $('#message').append('<span class="text-[#09C9CC]">' + response.message + '</span>');
+                        setTimeout(function(){
+                            window.location.href = '/'; 
+                            $('#message').empty();
+                        }, 1000);
+                    }else if (response.status === 'error'){
+                        $('#message').append('<span class="text-[#f00]">' + response.message + '</span>');
+
+                        setTimeout(function(){
+                            $('#message').empty();
+                            spin_add(false)
+                        }, 3000);
+                    }
+                }
+            });
+        });
+    });
+</script>

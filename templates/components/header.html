@@ -1,0 +1,193 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<header id="mainHeader" class="fixed top-0 w-full h-auto b_center max-lg:pt-4 lg:pt-8 pb-3 max-md:px-4 md:px-8 lg:px-20 z-40 ">
+    <a href="/">
+        <img src="/static/assets/logos/brand_logo.png" alt="" class="max-lg:h-10 lg:h-12 ">
+    </a>
+
+    {% url 'index:index' as index  %}
+
+
+    <div class="b_center gap-3 p-1 bg-[#061717CC] rounded-[8px] max-lg:hidden">
+        <a href="/" class="py-2 px-4 rounded-[4px] hover:bg-[#09C9CC] hover:text-black 
+        {% if request.path == index %} bg-[#09C9CC] text-black  {% endif %}">Home</a>
+        <a href="#" class="py-2 px-4 rounded-[4px] hover:bg-[#09C9CC] hover:text-black">About</a>
+        <a href="#" class="py-2 px-4 rounded-[4px] hover:bg-[#09C9CC] hover:text-black">News & Events</a>
+        <a href="#" class="py-2 px-4 rounded-[4px] hover:bg-[#09C9CC] hover:text-black">Contact</a>
+    </div>
+
+    <div class="z-50 flex justify-center items-center gap-8">
+        <div class="flex justify-between items-center gap-4">
+            {% if not request.user.is_authenticated %}
+            <a href="{% url 'accounts:authentication' %}" class="max-lg:hidden w-40 h-10 bg-[#09C9CC] c_center rounded-[8px] text-black hover:bg-[#09C9CC]/70 hover:shadow-xl shadow-[#09C9CC] hover:border-[2px] hover:border-[#09C9CC] " >Register Now</a>
+
+            {% else %}
+            <a href="#" class="max-lg:hidden w-40 h-10 bg-[#09C9CC] c_center rounded-[8px] text-black hover:bg-[#09C9CC]/70 hover:shadow-xl shadow-[#09C9CC] hover:border-[2px] hover:border-[#09C9CC] " >Apply</a>
+
+            <div class="relative group">
+                <img class=" max-md:w-8 md:w-10 max-md:h-8 md:h-10 border-[1px] cursor-pointer border-white/50 rounded-full peer bg-[#021d1e] hover:bg-[#0d3031]" src="/static/assets/temp/avater-1.png" alt="">
+                
+                <div class="absolute top-[50%] -right-[100%]  h-[200px] w-[180px] pt-7 hidden group-hover:block transition-all ease-in-out duration-300 cursor-pointer">
+                    <div class="h-full w-full rounded-md bg-gradient-to-br from-[#09c9ccbb] to-[#013435c9] p-[1px] cursor-default">
+                        <div class="h-full w-full bg-[#010f0fd0] rounded-md ps-5 py-5 pe-3 flex flex-col justify-between">
+                            <a href="#" class="text-[#09c9ccb9] hover:text-[#09C9CC] flex gap-4 items-center transition-colors ease-in-out duration-100">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" style="fill: currentColor;"><path d="M12 2a5 5 0 1 0 5 5 5 5 0 0 0-5-5zm0 8a3 3 0 1 1 3-3 3 3 0 0 1-3 3zm9 11v-1a7 7 0 0 0-7-7h-4a7 7 0 0 0-7 7v1h2v-1a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v1z"></path></svg>
+
+                                <p>My Profile</p>
+                            </a>
+                            <a href="#" class="text-[#09c9ccb9] hover:text-[#09C9CC] flex gap-4 items-center transition-colors ease-in-out duration-100">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" style="fill: currentColor;"><path d="M4 8H2v12a2 2 0 0 0 2 2h12v-2H4z"></path><path d="M20 2H8a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zm-9 12V6l7 4z"></path></svg>
+
+                                <p>My Course</p>
+                            </a>
+                            <a href="#" class="text-[#09c9ccb9] hover:text-[#09C9CC] flex gap-4 items-center transition-colors ease-in-out duration-100">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" style="fill: currentColor;"><path d="M4.035 15.479A3.976 3.976 0 0 0 4 16c0 2.378 2.138 4.284 4.521 3.964C9.214 21.198 10.534 22 12 22s2.786-.802 3.479-2.036C17.857 20.284 20 18.378 20 16c0-.173-.012-.347-.035-.521C21.198 14.786 22 13.465 22 12s-.802-2.786-2.035-3.479C19.988 8.347 20 8.173 20 8c0-2.378-2.143-4.288-4.521-3.964C14.786 2.802 13.466 2 12 2s-2.786.802-3.479 2.036C6.138 3.712 4 5.622 4 8c0 .173.012.347.035.521C2.802 9.214 2 10.535 2 12s.802 2.786 2.035 3.479zm1.442-5.403 1.102-.293-.434-1.053A1.932 1.932 0 0 1 6 8c0-1.103.897-2 2-2 .247 0 .499.05.73.145l1.054.434.293-1.102a1.99 1.99 0 0 1 3.846 0l.293 1.102 1.054-.434C15.501 6.05 15.753 6 16 6c1.103 0 2 .897 2 2 0 .247-.05.5-.145.73l-.434 1.053 1.102.293a1.993 1.993 0 0 1 0 3.848l-1.102.293.434 1.053c.095.23.145.483.145.73 0 1.103-.897 2-2 2-.247 0-.499-.05-.73-.145l-1.054-.434-.293 1.102a1.99 1.99 0 0 1-3.846 0l-.293-1.102-1.054.434A1.935 1.935 0 0 1 8 18c-1.103 0-2-.897-2-2 0-.247.05-.5.145-.73l.434-1.053-1.102-.293a1.993 1.993 0 0 1 0-3.848z"></path><path d="m15.742 10.71-1.408-1.42-3.331 3.299-1.296-1.296-1.414 1.414 2.704 2.704z"></path></svg>
+
+                                <p>My Certificates</p>
+                            </a>
+                            <a href="{% url 'accounts:logout' %}" class="text-[#09c9ccb9] hover:text-[#09C9CC] flex gap-4 items-center transition-colors ease-in-out duration-100">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" style="fill: currentColor;">
+                                    <path d="M16 13v-2H7V8l-5 4 5 4v-3z"></path>
+                                    <path d="M20 3h-9c-1.103 0-2 .897-2 2v4h2V5h9v14h-9v-4H9v4c0 1.103.897 2 2 2h9c1.103 0 2-.897 2-2V5c0-1.103-.897-2-2-2z"></path>
+                                </svg>
+
+                                <p>Logout</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        
+        <div  class="lg:hidden relative">
+            <div id="CloseNav" class="h-full w-full  absolute top-0 left-0 z-50 hidden"></div>
+            <label for="sideNavOpen" class="navBtn">
+                <input id="sideNavOpen" type="checkbox">
+                <div class="checkmark">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </label>
+        </div>
+    </div>
+</header>
+
+
+
+<aside id="sidenav" class="fixed top-0 left-0 max-md:w-[70%] max-lg:w-[50%] h-[100vh] z-40 bg-[#09C9CC]/50 backdrop-blur-md transition-transform ease duration-300 lg:hidden sidenav  flex flex-col -translate-x-full">
+    <div class=" h-full w-full relative">
+        <div class="h-40 w-full bg-white flex justify-center items-center">
+            <img src="/static/assets/logos/logo.png" alt="" class="h-36 ">
+        </div>
+
+        <a href="#" class=" w-full h-10 bg-[#09C9CC] c_center text-black hover:bg-[#09C9CC]/70 hover:shadow-xl shadow-[#09C9CC] hover:border-[2px] hover:border-[#09C9CC] ">Register Now</a>
+
+        <div class="b_center flex-col gap-3 p-1 mt-5">
+            <a href="#" class="py-2 px-8 rounded-[4px] hover:bg-[#09C9CC] hover:text-black">Home</a>
+            <a href="#" class="py-2 px-8 rounded-[4px] hover:bg-[#09C9CC] hover:text-black">About</a>
+            <a href="#" class="py-2 px-8 rounded-[4px] hover:bg-[#09C9CC] hover:text-black">News & Events</a>
+            <a href="#" class="py-2 px-8 rounded-[4px] hover:bg-[#09C9CC] hover:text-black">Contact</a>
+        </div>
+        <div class="absolute bottom-10 right-0 w-full h-auto">
+            {% include 'components/social.html' %}
+        </div>
+    </div>
+</aside>
+
+
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+    $(document).ready(function() {
+        let startX;
+
+        // Function to toggle sidenav based on checkbox state
+        function toggleSidenav() {
+            if ($('#sideNavOpen').is(':checked')) {
+                $('#CloseNav').show();
+                $('#black_shutter').fadeIn('fast');
+                $('#sidenav').removeClass('-translate-x-full').addClass('translate-x-0');
+                disableScroll()
+            } else {
+                $('#sidenav').removeClass('translate-x-0').addClass('-translate-x-full'); 
+                $('#black_shutter').fadeOut('slow'); 
+                $('#CloseNav').hide(); 
+                enableScroll()
+            }
+        }
+
+        // Function to handle swipe gesture
+        function handleSwipe(change) {
+            if (change > 50) {
+                $('#sideNavOpen').prop('checked', true); 
+                toggleSidenav();  
+            } else if (change < -50) {
+                $('#sideNavOpen').prop('checked', false); 
+                toggleSidenav(); 
+            }
+        }
+
+        
+        function checkBreakpoint() {
+            var width = $(window).width();
+            if (width <= 1024) {
+                $('#sideNavOpen').change(function(event) {
+                    toggleSidenav(); 
+                    event.stopPropagation(); 
+                });
+
+                $(document).on('click', function(event) {
+                    if (!$(event.target).closest('#sidenav, #sideNavOpen').length) {
+                        $('#sideNavOpen').prop('checked', false); 
+                        toggleSidenav();  
+                    }
+                });
+
+                $('#sidenav').on('click', function(event) {
+                    event.stopPropagation(); 
+                });
+
+                $('#CloseNav').on('click', function(event) {
+                    $('#sideNavOpen').prop('checked', false);
+                    toggleSidenav(); 
+                });
+
+                
+
+                $(document).on('touchstart', function(e) {
+                    startX = e.originalEvent.touches[0].clientX;
+                });
+
+                $(document).on('touchmove', function(e) {
+                    let touch = e.originalEvent.touches[0];
+                    let change = touch.clientX - startX; 
+                    handleSwipe(change);  
+                });
+            }
+        }
+
+        checkBreakpoint();
+
+        $(window).resize(function() {
+            checkBreakpoint();
+        });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $(window).scroll(function() {
+            if ($(window).scrollTop() > 20) {
+                $('#mainHeader').addClass('backdrop-blur-lg bg-[#10414271]'); 
+            } else {
+                $('#mainHeader').removeClass('backdrop-blur-lg bg-[#10414271]');
+            }
+        });
+        if ($(window).scrollTop() > 20) {
+            $('#mainHeader').addClass('backdrop-blur-lg bg-[#10414271]'); 
+        } else {
+            $('#mainHeader').removeClass('backdrop-blur-lg bg-[#10414271]'); 
+        }
+    });
+</script>

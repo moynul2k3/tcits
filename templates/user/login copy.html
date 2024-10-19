@@ -1,0 +1,77 @@
+{% include 'index/index.html' %}
+{% load static tailwind_tags %}
+<div class="fixed top-0 left-0 h-screen w-screen bg-[#010f0f4f] z-50 backdrop-blur-sm flex justify-center items-center ">
+    <div class="max-md:h-full min-h-[500px] max-md:w-full md:w-[500px] bg-[#053c3db9] backdrop-blur-[50%] max-md:px-5 md:px-10 py-10 rounded relative overflow-y-auto">
+        <form action="." method="post" >
+            {% csrf_token %}
+            <div class="flex justify-center items-center relative max-md:mt-10">
+                <a href="/" class="text-xl font-thin text-center text-[#ff245e]/80 dark:text-[#09C9CC] mb-14 absolute left-0"><i class='bx bx-arrow-back'></i></a>
+                <p class="text-5xl font-thin text-center text-[#ff245e]/80 dark:text-[#09C9CC] mb-14">Login</p>
+            </div>
+            <div class="relative ">
+                <label for="email" class="text-[#ff245e]/80 dark:text-[#09C9CC] relative">Email</label>
+                <div class="bg-[#ff245e]/10 dark:bg-white/10 rounded my-2">
+                    <input type="email" name="email" id="email" placeholder="Your email"  class="bg-transparent w-full h-12 text-[#ff245e]/80 dark:text-[#09C9CC] border-none focus:border-none focus:outline-none focus:ring-0 rounded peer">
+                    {% if error_message %}
+                    <small class="absolute -bottom-6 left-0 justify-between w-full py-1 text-xs transition text-red-500 hidden peer-invalid:block">
+                        <span>{{ error_message }}</span>
+                    </small>
+                    {% else %}
+                    <small class="absolute -bottom-6 left-0 justify-between w-full py-1 text-xs transition text-red-500 hidden peer-invalid:block">
+                        <span>Please enter a valid email.</span>
+                    </small>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="mt-8">
+                <label for="password" class="text-[#ff245e]/80 dark:text-[#09C9CC]">Password</label>
+                <div class="bg-[#ff245e]/10 dark:bg-white/10 rounded mt-2 relative flex items-center">
+                    <input type="password" name="password" id="password" placeholder="Your password"  class="visible bg-transparent w-full h-12 text-[#ff245e]/80 dark:text-[#09C9CC] border-none focus:border-none focus:outline-none focus:ring-0 rounded invalid:bg-rose-600/10 invalid:text-rose-400">
+                    <span class="toggle-password cursor-pointer absolute right-3 select-none" onclick="togglePassword()">
+                        <i class="fas fa-eye-slash eye text-[#ff245e]/80 dark:text-[#09C9CC] text-lg"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="w-full flex justify-center items-center">
+                <button type="submit" class="mt-5 h-12 text-sm w-full  c_center shadow-[inset_0px_0px_27px_3px_rgba(9,_201,_204,_1)] rounded-md  hover:bg-[#09C9CC] text-[#09C9CC] hover:text-black duration-75">
+                    <span class="  ">Login</span>
+                </button>
+            </div>
+        </form>
+
+        <div class="inline-flex items-center justify-center w-full gap-5 mt-4">
+            <hr class="w-64 h-px my-8 bg-[#09C9CC] border-0 ">
+            <span class="absolute px-3 font-medium text-[#09C9CC] -translate-x-1/2 left-1/2">or</span>
+            <hr class="w-64 h-px my-8 bg-[#09C9CC] border-0 ">
+        </div>
+        <div class="w-full flex justify-center items-center">
+            <button type="submit" class="mt-5 h-12 text-sm w-full  c_center shadow-[inset_0px_0px_27px_3px_rgba(9,_201,_204,_1)] rounded-md  hover:bg-[#09C9CC] text-[#09C9CC] hover:text-black duration-75">
+                <span class="  ">Login with google</span>
+            </button>
+        </div>
+        
+
+
+        <div class="w-full flex justify-center items-center mt-12 text-black/80 dark:text-white/80 opacity-50 text-sm tracking-widest font-thin select-none">
+            <p>This website designed by <a href="https://www.facebook.com/quantaplusplus" class="text-[#ff245e]/80 dark:text-[#09C9CC] font-semibold" target="_blank">Quanta++</a></p>
+        </div>
+    </div>
+</div>
+
+    <script>
+        $(document).ready(function() {
+            disableScroll()
+            $(".toggle-password").click(function() {
+                var passwordField = $("#password");
+                var passwordFieldType = passwordField.attr("type");
+                if (passwordFieldType === "password") {
+                    passwordField.attr("type", "text");
+                    $('.eye').removeClass('fas fa-eye-slash').addClass('far fa-eye');
+                } else {
+                    passwordField.attr("type", "password");
+                    $('.eye').addClass('fas fa-eye-slash').removeClass('far fa-eye');
+                }
+            });
+        });
+    </script>

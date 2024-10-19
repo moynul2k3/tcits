@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load static tailwind_tags %}
+{% block title %}Bad Request (400){% endblock %}
+
+{% block content %}
+<div class="h-screen bg-zinc-600 ">
+    <h1>400 - Bad Request</h1>
+    <p>Sorry, there was a problem with your request. It seems that the server could not understand what you sent.</p>
+    <p>Please check the URL or try again later.</p>
+    <a href="/">Go back to Home</a>
+</div>
+{% endblock %}

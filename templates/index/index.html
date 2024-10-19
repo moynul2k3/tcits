@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+{% load static tailwind_tags cache %}
+{% block title %}| Home{% endblock %}
+{% block content %}
+<div class="mb-20">
+    <!-- ---------------hero Section-------------- -->
+    <div class="max-md:h-[400px] md:h-[600px] lg:h-[600px] w-full c_center flex-col gap-6">
+        <p class="font-sanita max-md:text-4xl md:text-6xl">Titumir College</p>
+        <div class="c_center gap-5">
+            <div class="flex -space-x-2 rtl:space-x-reverse ">
+                <a class="flex items-center justify-center w-10 h-10 text-xs font-medium text-white bg-gray-700 border-[1px] border-white/50 rounded-full hover:bg-gray-600 " href="#">1k+</a>
+                <img class="w-10 h-10 border-[1px] border-white/50 rounded-full  bg-[#021d1e]" src="/static/assets/temp/avater-1.png" alt="">
+                <img class="w-10 h-10 border-[1px] border-white/50 rounded-full  bg-[#021d1e]" src="/static/assets/temp/avater-1.png" alt="">
+            </div>
+            <p class="font-poppins max-md:text-3xl md:text-5xl font-extrabold">IT Society</p>
+        </div>
+        <p class="font-poppins max-md:text-xs md:text-sm text-center max-md:px-4 md:px-10 lg:px-60 text-white/30 font-extralight">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquid quas labore dolorum? Consequuntur optio accusantium explicabo eligendi reiciendis bl</p>
+    </div>
+
+
+
+
+    <!-- ---------------EXPLORE TCITS-------------- -->
+    <div class="md:mt-4 lg:mt-8 max-md:px-4 md:px-8 lg:px-20">
+        <p class="max-md:text-2xl md:text-4xl text-center font-poppins font-bold ">EXPLORE TCITS</p>
+
+        <div class="max-md:mt-5 md:mt-10 flex flex-wrap justify-center items-center max-md:gap-5 md:gap-10">
+            <div class="p-2 max-md:h-[250px] md:h-[300px] max-md:w-[230px] md:w-[280px] bg-[#021213] rounded-lg" style="background-image: url('/static/assets/banner/card-bg-1.png'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+                <div class="bg-[#021D1E66] h-full w-full rounded-lg flex flex-col justify-between items-center py-5 px-5">
+                    <img src="/static/assets/icon/it_kotha.png" alt="" class="h-[40%]">
+                    <div>
+                        <p class="max-md:text-xl md:text-2xl text-center">IT KOTHA</p>
+                        <p class="max-md:text-xs md:text-xs text-center text-white/50">Here's your main account balance.</p>
+                    </div>
+                    <a href="#" class="text-sm w-[90%] hover:w-full h-12 c_center shadow-[inset_0px_0px_27px_3px_rgba(9,_201,_204,_1)] rounded-md  hover:bg-[#09C9CC] text-[#09C9CC] hover:text-black" >Learn More</a>
+                </div>
+            </div>
+
+            <div class="p-2 max-md:h-[250px] md:h-[300px] max-md:w-[230px] md:w-[280px] bg-[#021213] rounded-lg" style="background-image: url('/static/assets/banner/card-bg-1.png'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+                <div class="bg-[#021D1E66] h-full w-full rounded-lg flex flex-col justify-between items-center py-5 px-5">
+                    <img src="/static/assets/icon/courses-icon.png" alt="" class="h-[40%]">
+                    <div>
+                        <p class="max-md:text-xl md:text-2xl text-center">COURSES</p>
+                        <p class="max-md:text-xs md:text-xs text-center text-white/50">Here's your main account balance.</p>
+                    </div>
+                    <a href="#" class="text-sm w-[90%] hover:w-full h-12 c_center shadow-[inset_0px_0px_27px_3px_rgba(9,_201,_204,_1)] rounded-md  hover:bg-[#09C9CC] text-[#09C9CC] hover:text-black" >Learn More</a>
+                </div>
+            </div>
+
+            <div class="p-2 max-md:h-[250px] md:h-[300px] max-md:w-[230px] md:w-[280px] bg-[#021213] rounded-lg" style="background-image: url('/static/assets/banner/card-bg-1.png'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+                <div class="bg-[#021D1E66] h-full w-full rounded-lg flex flex-col justify-between items-center py-5 px-5">
+                    <div class="flex -space-x-2 rtl:space-x-reverse ">
+                        <img class="w-10 h-10 z-20 border-[1px] border-white/50 rounded-full  bg-[#021d1e]" src="/static/assets/temp/avater-1.png" alt="">
+                        <img class="w-14 h-14 z-30 border-[1px] border-white/50 rounded-full  bg-[#021d1e]" src="/static/assets/temp/avater-1.png" alt="">
+                        <img class="w-10 h-10 z-20 border-[1px] border-white/50 rounded-full  bg-[#021d1e]" src="/static/assets/temp/avater-1.png" alt="">
+                    </div>
+                    <div>
+                        <p class="max-md:text-xl md:text-2xl text-center">WE ARE A FAMILY</p>
+                        <p class="max-md:text-xs md:text-xs text-center text-white/50">1k+ students have already joined TCITS. Register to join our family now</p>
+                    </div>
+                    <a href="#" class="text-sm w-[90%] hover:w-full h-12 c_center shadow-[inset_0px_0px_27px_3px_rgba(9,_201,_204,_1)] rounded-md  hover:bg-[#09C9CC] text-[#09C9CC] hover:text-black" >Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- -----------------OUR JOURNEY-------------------- -->
+    <div class="flex max-md:flex-col-reverse  justify-between items-center gap-10 max-lg:mt-20 lg:mt-40 max-md:px-8 md:px-8 lg:px-20">
+        <div class="max-md:w-full md:w-[60%] max-md:text-center ">
+            <p class="max-md:text-2xl md:text-4xl max-md:text-center font-poppins font-bold ">OUR JOURNEY</p>
+
+            <p class="mt-8 text-white/50">
+                In 2020, the pendemic situation of Covid-19, Some Titumirian talented
+                Students
+                decided to make something new, that has improved their skill & help other
+                stuednts skills. As a result, in May, at the initiative of a student named Arif
+                Hossain Rajan, they launched an online platform called Titumir IT
+                Community. There, in the beginning, they started to carry out IT programs
+                practice among themselves. As a result, at one time they decided to form an
+                organization called Titumir College IT Society. 
+            </p>
+            <div class="flex max-md:justify-center md:justify-start w-full mt-5">
+                <a href="#" class="text-sm w-[60%] hover:w-[70%] h-12 c_center shadow-[inset_0px_0px_27px_3px_rgba(9,_201,_204,_1)] rounded-md  hover:bg-[#09C9CC] text-[#09C9CC] hover:text-black" >Learn More</a>
+            </div>
+        </div>
+        <div class="max-md:w-full md:w-[40%] flex max-md:justify-center md::justify-end items-center gap-10">
+            <div class="p-[1px] rounded-lg bg-gradient-to-bl from-[#09C9CC] to-[#004e4e]">
+                <div class="h-auto w-auto rounded-lg bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-[#155052] from-0% to-[#021d1e] p-4">
+                    <img src="/static/assets/temp/avater-1.png" alt="" class="h-full max-w-[287px] bg-[#09C9CC] rounded-lg">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- ---------------OUR MISSION & VISION-------------- -->
+    <div class="max-lg:mt-20 lg:mt-40 max-md:px-4 md:px-8 lg:px-20">
+        <p class="max-md:text-2xl md:text-4xl text-center font-poppins font-bold ">OUR MISSION & VISION</p>
+
+        <div class="w-full flex max-md:flex-col max-md:gap-5 md:gap-10 justify-between items-start mt-5">
+            <div class="p-[1px] flex-1 w-full rounded-lg bg-gradient-to-b from-[#269EE2] to-[#269EE233]">
+                <div class="h-60 w-full rounded-lg bg-gradient-to-b from-[#061f2e] to-[#010F0F] b_center flex-col">
+                    <div class="w-full h-12 c_center bg-white/10 text-xl">Mission</div>
+                    <div class="flex-1 c_center p-2 px-4">
+                        <p class="text-center ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio eum numquam voluptate expedita quia nesciunt? Culpa, delectus natus? Modi, quibusdam!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="p-[1px] flex-1 w-full rounded-lg bg-gradient-to-b from-[#FE5811] to-[#FE58111A]">
+                <div class="h-60 w-full rounded-lg bg-gradient-to-b from-[#3b1d0f] to-[#010F0F] b_center flex-col">
+                    <div class="w-full h-12 c_center bg-white/10 text-xl">Vision</div>
+                    <div class="flex-1 c_center p-2 px-4">
+                        <p class="text-center ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio eum numquam voluptate expedita quia nesciunt? Culpa, delectus natus? Modi, quibusdam!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
